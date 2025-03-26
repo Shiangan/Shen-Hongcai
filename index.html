@@ -727,6 +727,141 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 }
 </style>
+       
+
+   <div class="transport-info">
+    <h2 class="title">台北市懷愛館（第二殯儀館）</h2>
+    <p class="subtitle">懷恩專車＆停車資訊</p>
+
+    <!-- 圖片展示 -->
+    <div class="image-gallery">
+        <img src="image/交通00004.GIF" alt="S31" class="gallery-img" aria-label="交通指引">
+        <img src="image/交通00005.GIF" alt="S32" class="gallery-img" aria-label="交通指引">
+        <img src="image/交通00003.GIF" alt="S33" class="gallery-img" aria-label="交通指引">
+        <img src="image/交通00002.GIF" alt="S34" class="gallery-img" aria-label="交通指引">
+        <img src="image/交通00001.GIF" alt="S35" class="gallery-img" aria-label="交通指引">
+        <img src="image/交通00007.JPG" alt="搭車資訊" class="gallery-img" aria-label="搭車資訊">
+        <img src="image/交通00008.JPG" alt="交通指引" class="gallery-img" aria-label="交通指引">
+        <img src="image/交通00009.JPG" alt="指引圖" class="gallery-img" aria-label="指引圖">
+        <img src="image/交通00006.JPG" alt="停車資訊" class="gallery-img" aria-label="停車資訊">
+    </div>
+</div>
+
+<style>
+    :root {
+        --primary-bg-color: #f9f9f9;
+        --title-color: #333;
+        --subtitle-color: #555;
+        --image-border-radius: 10px;
+        --hover-scale: 1.08;
+        --transition-duration: 0.3s;
+        --box-shadow: rgba(0, 0, 0, 0.1) 0 6px 12px;
+    }
+
+    /* 整體容器 */
+    .transport-info {
+        padding: 20px;
+        background-color: var(--primary-bg-color);
+        border-radius: var(--image-border-radius);
+        margin-top: 20px;
+        text-align: center;
+        box-shadow: var(--box-shadow);
+        max-width: 900px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* 標題樣式 */
+    .title {
+        font-family: 'Arial', sans-serif;
+        color: var(--title-color);
+        font-size: 26px;
+        font-weight: bold;
+        margin-bottom: 12px;
+        letter-spacing: 1px;
+    }
+
+    /* 副標題樣式 */
+    .subtitle {
+        font-family: 'Arial', sans-serif;
+        color: var(--subtitle-color);
+        font-size: 18px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        margin-bottom: 20px;
+    }
+
+    /* 圖片畫廊 */
+    .image-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 15px;
+        justify-items: center;
+    }
+
+    /* 圖片樣式 */
+    .gallery-img {
+        width: 100%;
+        height: auto;
+        border-radius: var(--image-border-radius);
+        transition: transform var(--transition-duration) ease, box-shadow var(--transition-duration) ease;
+        cursor: pointer;
+    }
+
+    /* 懸停效果 */
+    .gallery-img:hover {
+        transform: scale(var(--hover-scale));
+        box-shadow: rgba(0, 0, 0, 0.2) 0 8px 16px;
+    }
+
+    /* 響應式設計：圖片調整 */
+    @media (max-width: 600px) {
+        .gallery-img {
+            width: 90%;
+        }
+    }
+
+    /* 燈箱樣式 */
+    .lightbox {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.8);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+    }
+
+    .lightbox img {
+        max-width: 90%;
+        max-height: 90%;
+        border-radius: 10px;
+    }
+</style>
+
+<script>
+    // 點擊圖片時顯示燈箱
+    document.querySelectorAll(".gallery-img").forEach(img => {
+        img.addEventListener("click", function() {
+            const lightbox = document.createElement("div");
+            lightbox.classList.add("lightbox");
+
+            const lightboxImg = document.createElement("img");
+            lightboxImg.src = this.src;
+
+            lightbox.appendChild(lightboxImg);
+            document.body.appendChild(lightbox);
+
+            // 點擊燈箱時關閉
+            lightbox.addEventListener("click", () => {
+                lightbox.remove();
+            });
+        });
+    });
+</script>
 
 
 <!-- 页脚 -->
